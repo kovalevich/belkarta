@@ -1,0 +1,3 @@
+publication_view:
+    path: /publication/{slug}
+    defaults: { _controller: BlogPublicationsBundle:Default:index }

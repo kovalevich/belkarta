@@ -1,0 +1,64 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+    <h2 class="style1">Каталог компаний</h2>
+    <div style="margin: 25px 0;">
+        <a href="#" id="city" data-type="text" data-value="{% if city != 'all' %}{{ city }}{% else %}-1{% endif %}" class="editable editable-title" data-pk="-1" data-title="Введите название города">{% if city != 'all' %}{{ city }}{% else %}Выбрать город{% endif %}</a>
+        &nbsp;&nbsp;
+        <a href="#" id="type" data-type="select" data-value="{% if type != 'all' %}{{ type.id }}{% else %}-1{% endif %}" class="editable-type" data-pk="-1" data-title="Выберите категорию">{% if type != 'all' %}{{ type.title }}{% else %}Выбрать категорию{% endif %}</a>
+        &raquo;
+        <a href="#" id="search" class="btn btn-info"><i class="fa fa-search"></i> Найти</a>
+    </div>
+    <div class="companies">
+        {{ include('BelkartaCompanyBundle:Default:companiesList.html.twig', { 'items': companies }) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/app/js/bootstrap/bootstrap.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/plugins/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/plugins/bootstrap-editable/bootstrap-editable.min.js') }}"></script>
+
+    <script type="text/javascript">
+        var url = '{{ path('belkarta_companies') }}';
+        $(document).ready(function() {
+            $('.editable').editable({
+
+                ajaxOptions: {
+                    type: 'post',
+                    dataType: 'json'
+                }
+            });
+
+            $('.editable-type').editable({
+                source: '{{ path('ajax_types') }}'
+            });
+
+            $('#type').on('save', function(e, params) {
+                $('#type').attr('data-value', params.newValue);
+            });
+
+            $('.editable').on('shown', function(e, editable) {
+                editable.input.$input.val('');
+            });
+
+            $('#city').on('save', function(e, params) {
+                $('#city').attr('data-value', params.newValue);
+            });
+
+            $('#search').on('click', function(){
+                var city = $('#city').attr('data-value');
+                var type = $('#type').attr('data-value');
+
+                if(city == -1) city = 'all';
+                if(type == -1) type = 'all';
+
+                window.location.replace(url + '/' + type + '/' + city);
+                return 0;
+            });
+        });
+
+    </script>
+
+{% endblock %}

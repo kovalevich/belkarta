@@ -1,0 +1,8 @@
+Belkarta\CompnanyBundle\Entity\Company:
+    properties:
+        name:
+            - NotBlank: ~
+        phone:
+            - NotBlank: ~
+        contactUser:
+            - NotBlank: ~

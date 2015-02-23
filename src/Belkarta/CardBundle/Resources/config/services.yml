@@ -1,0 +1,4 @@
+services:
+#    belkarta_card.example:
+#        class: Belkarta\CardBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,11 @@
+belkarta_companies:
+    path:     /catalog/{type}/{city}
+    defaults: { _controller: BelkartaCompanyBundle:Default:index, type: 'all', city: 'all' }
+
+belkarta_company_new:
+    path:     /company/new
+    defaults: { _controller: BelkartaCompanyBundle:Default:create }
+
+belkarta_company_created:
+    path: /company/created
+    defaults: { _controller: BelkartaCompanyBundle:Default:created }

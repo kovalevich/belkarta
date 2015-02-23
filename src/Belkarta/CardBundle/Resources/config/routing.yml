@@ -1,0 +1,3 @@
+belkarta_card_new:
+    path:     /carta/new/{type}
+    defaults: { _controller: BelkartaCardBundle:Default:index, type: 'classic' }

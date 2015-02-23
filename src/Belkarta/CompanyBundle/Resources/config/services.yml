@@ -1,0 +1,4 @@
+services:
+#    belkarta_company.example:
+#        class: Belkarta\CompanyBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

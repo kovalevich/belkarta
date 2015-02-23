@@ -1,0 +1,65 @@
+<?php
+
+namespace Belkarta\CardBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * Card
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Belkarta\CardBundle\Entity\CardRepository")
+ */
+class Card
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="type", type="integer")
+     */
+    private $type;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer")
+     */
+    private $status;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="text")
+     */
+    private $address;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Profile\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created", type="datetime")
+     */
+    private $created;
+
+    /**
+     * @ORM\Column(name="updated", type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $updated;
+
+
+}

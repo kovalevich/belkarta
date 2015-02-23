@@ -1,0 +1,10 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+<h2 class="style1">БЕЛКАРТА "{{ type|upper }}"</h2>
+<div>
+    {{ publication.text|raw }}
+</div>
+    <br/><br/>
+<a href="#" class="btn btn-1">КУПИТЬ КАРТУ</a>
+{% endblock %}
