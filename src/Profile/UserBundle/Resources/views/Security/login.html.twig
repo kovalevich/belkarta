@@ -27,17 +27,9 @@
                 </label>
             </div>
 
-            <div>
-                <div>
-                    <span><input type="submit" value="ВОЙТИ"></span>
-                </div>
-            </div>
+            <button class="btn btn-success" type="submit">ВОЙТИ</button> или <a href="{{ path('fos_user_registration_register') }}">Зарегистрироваться</a>
 
         </form>
-    </div>
-
-    <div class="links">
-            <a href="{{ path('fos_user_registration_register') }}">Зарегистрироваться</a>
     </div>
 
 {% endblock content %}

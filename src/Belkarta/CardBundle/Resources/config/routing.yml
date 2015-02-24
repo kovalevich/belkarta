@@ -1,3 +1,11 @@
 belkarta_card_new:
-    path:     /carta/new/{type}
+    path:     /carta/{type}
     defaults: { _controller: BelkartaCardBundle:Default:index, type: 'classic' }
+
+belkarta_card_buy:
+    path:     /carta/buy/{type}
+    defaults: { _controller: BelkartaCardBundle:Default:buy }
+
+belkarta_payment_start:
+    path: /carta/payment/{id}
+    defaults: { _controller: BelkartaCardBundle:Default:payment }

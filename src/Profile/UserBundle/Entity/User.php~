@@ -101,37 +101,4 @@ class User extends BaseUser
     {
         return $this->type;
     }
-
-    /**
-     * Add cards
-     *
-     * @param \Belkarta\CardBundle\Entity\Card $cards
-     * @return User
-     */
-    public function addCard(\Belkarta\CardBundle\Entity\Card $cards)
-    {
-        $this->cards[] = $cards;
-
-        return $this;
-    }
-
-    /**
-     * Remove cards
-     *
-     * @param \Belkarta\CardBundle\Entity\Card $cards
-     */
-    public function removeCard(\Belkarta\CardBundle\Entity\Card $cards)
-    {
-        $this->cards->removeElement($cards);
-    }
-
-    /**
-     * Get cards
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCards()
-    {
-        return $this->cards;
-    }
 }

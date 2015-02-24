@@ -143,6 +143,121 @@ class AjaxController extends Controller
         ));
     }
 
+    public function UsersAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('ProfileUserBundle:User');
+
+        $arr = array();
+        $params = array();
+        $order = null;
+
+        $search = $request->get('search');
+        $search = !empty($search['value']) ? $search['value'] : null;
+
+        $sort = $request->get('order');
+
+        if(!empty($sort[0]))
+            $order = array($request->get('columns')[$sort[0]['column']]['data'], $sort[0]['dir']);
+
+        $users = $repository->getUsersWithParams($search, $request->get('length'), $request->get('start'), $order);
+
+        foreach($users as $user){
+            $arr[] = array(
+                'id'    => $user->getId(),
+                'name' => '<a href="' . $this->generateUrl('admin_users_edit', array(
+                        'id' => $user->getId()
+                    )) . '">' . $user->getUserName() . '</a>',
+                'created'   => $user->getCreated()->format('d.m.Y'),
+                'delete'    => '<a href="' . $this->generateUrl('admin_users_delete', array(
+                        'id' => $user->getId()
+                    )) . '" class="mod-delete"><i class="fa fa-trash-o"></i></a>'
+            );
+        }
+
+        $total = $repository->getCount();
+
+        return new JsonResponse(array(
+            'recordsTotal' => count($arr),
+            'recordsFiltered' => $total["1"],
+            'data' => $arr
+        ));
+    }
+
+    public function CardsAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('BelkartaCardBundle:Card');
+
+        $arr = array();
+        $params = array();
+        $order = null;
+
+        $search = $request->get('search');
+        $search = !empty($search['value']) ? $search['value'] : null;
+
+        $sort = $request->get('order');
+
+        if(!empty($sort[0]))
+            $order = array($request->get('columns')[$sort[0]['column']]['data'], $sort[0]['dir']);
+
+        $cards = $repository->getCardsWithParams($search, $request->get('length'), $request->get('start'), $order);
+
+        foreach($cards as $card){
+            $status = '-';
+            switch($card->getStatus()){
+                case '0':
+                    $status = 'ожидает';
+                    break;
+                case '1':
+                    $status = 'оплачена';
+                    break;
+                case '2':
+                    $status = 'отправлена';
+                    break;
+                case '3':
+                    $status = 'получена';
+                    break;
+                default: $status = 'неизвестно';
+            }
+            $type = '';
+            switch($card->getType()){
+                case 'card-2':
+                    $type = '<span style="color: red">*classic</span>';
+                    break;
+                case 'card-1':
+                    $type = '<span style="color: red">*platinum</span>';
+                    break;
+                case '1':
+                    $type = 'classic';
+                    break;
+                default:
+                    $type = 'platinum';
+                    break;
+            }
+            $arr[] = array(
+                'id'        => $card->getId(),
+                'user'      => $card->getUser()->getUserName(),
+                'type'      => $type,
+                'phone'     => $card->getPhone(),
+                'address'   => $card->getAddress(),
+                'updated'      => $card->getUpdated()->format('d.m.Y'),
+                'status'   =>  $status,
+                'delete'    => '<a href="' . $this->generateUrl('admin_cards_delete', array(
+                        'id' => $card->getId()
+                    )) . '" class="mod-delete"><i class="fa fa-trash-o"></i></a>'
+            );
+        }
+
+        $total = $repository->getCount();
+
+        return new JsonResponse(array(
+            'recordsTotal' => count($arr),
+            'recordsFiltered' => $total["1"],
+            'data' => $arr
+        ));
+    }
+
     public function ThemesAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();

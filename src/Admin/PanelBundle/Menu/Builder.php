@@ -18,6 +18,9 @@ class Builder extends ContainerAware
         $menu->addChild('Статистика', array('route' => 'admin_panel_homepage'))
             ->setAttribute('icon', 'fa fa-bar-chart');
 
+        $menu->addChild('Карты', array('route' => 'admin_cards_index'))
+            ->setAttribute('icon', 'fa fa-credit-card');
+
         $menu->addChild('Компании', array('route'=> 'admin_panel_belkarta'))
             ->setAttribute('dropdown', true)
             ->setAttribute('icon', 'fa fa-child');
@@ -41,21 +44,11 @@ class Builder extends ContainerAware
         $menu['Блог']->addChild('Темы', array('route' => 'admin_panel_themes'))
             ->setAttribute('icon', 'fa fa-font');
 
-        $menu->addChild('Пользователи', array('route' => 'admin_panel_publications'))
+        $menu->addChild('Пользователи', array('route' => 'admin_users_index'))
             ->setAttribute('icon', 'fa fa-users');
 
-        $menu->addChild('Настройки', array('route' => 'admin_panel_publications'))
+        $menu->addChild('Настройки', array('uri' => '#'))
             ->setAttribute('icon', 'fa fa-cog');
-
-        $menu->addChild('Очистка')
-            ->setAttribute('dropdown', true)
-            ->setAttribute('icon', 'fa fa-trash-o');
-
-        $menu['Очистка']->addChild('Очистить кэш', array('route' => 'admin_panel_publications'))
-            ->setAttribute('icon', '');
-
-        $menu['Очистка']->addChild('Очистить очередь парсинга', array('route' => 'admin_panel_categories'))
-            ->setAttribute('icon', 'fa fa-folder');
 
 
         return $menu;

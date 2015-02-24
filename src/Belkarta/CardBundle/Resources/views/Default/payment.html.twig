@@ -1,0 +1,37 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+<div class="hidden">
+    <form action="https://payment.webpay.by" method="post" id="payform">
+        <input type="hidden" name="*scart">
+        <input type="hidden" name="wsb_version" value="2">
+        <input type="hidden" name="wsb_language_id" value="russian">
+        <input type="hidden" name="wsb_storeid" value="<?php echo $this->config->webpay->wsb_storeid ?>">
+        <input type="hidden" name="wsb_store" value="<?php echo $this->config->webpay->wsb_store ?>">
+        <input type="hidden" name="wsb_order_num" value="<?php echo $this->order_id ?>">
+        <input type="hidden" name="wsb_currency_id" value="BYR">
+        <input type="hidden" name="wsb_seed" value="<?php echo $this->seed ?>">
+        <input type="hidden" name="wsb_return_url" value="http://diplomov.by/payment/ok/type/webpay">
+        <input type="hidden" name="wsb_cancel_return_url" value="http://diplomov.by/room/payment/order/<?php echo $this->order_id ?>">
+        <input type="hidden" name="wsb_notify_url" value="http://diplomov.by/payment/ok/type/webpay">
+        <input type="hidden" name="wsb_invoice_item_name[0]" value="<?php echo $this->operation ?>">
+        <input type="hidden" name="wsb_invoice_item_quantity[0]" value="1">
+        <input type="hidden" name="wsb_invoice_item_price[0]" value="<?php echo $this->summ ?>">
+        <input type="hidden" name="wsb_total" value="<?php echo $this->summ ?>" >
+        <input type="hidden" name="wsb_signature" value="<?php echo $this->signature ?>" >
+    </form>
+</div>
+<div class="main-wrapp">
+    <div class="content">
+        Сейчас вы будете направлены на страницу оплаты....
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('#payform').submit();
+        });
+    </script>
+{% endblock %}

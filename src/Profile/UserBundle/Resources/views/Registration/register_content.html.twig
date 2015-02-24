@@ -4,9 +4,7 @@
     <h2 class="style1">РЕГИСТРАЦИЯ</h2>
     <form method="post" action="{{ path('fos_user_registration_register') }}">
         {{ form_widget(form) }}
-        <div>
-            <input type="submit" value="{{ 'registration.submit'|trans }}" />
-        </div>
+        <button type="submit" class="btn btn-success">{{ 'registration.submit'|trans }}</button>
     </form>
 </div>
 

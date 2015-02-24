@@ -135,6 +135,31 @@ class EditController extends Controller
         ));
     }
 
+    public function userAction(Request $request)
+    {
+        $id = $request->get('pk');
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('ProfileUserBundle:User')->find($id);
+
+        if(!$user) return new JsonResponse(array(
+            'false'
+        ));
+
+        $name = $request->get('name');
+        $value = $request->get('value');
+
+        $method = 'set'.ucfirst($name);
+        $user->$method($value);
+
+        $em->persist($user);
+        $em->flush();
+
+        return new JsonResponse(array(
+            'id'=> $user->getId()
+        ));
+    }
+
     public function themeAction(Request $request)
     {
         $id = $request->get('pk');

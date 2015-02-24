@@ -29,3 +29,11 @@ ajax_types:
 ajax_companies:
     path:     /ajax/get/companies
     defaults: { _controller: AppBundle:Ajax:companies }
+
+ajax_users:
+    path:     /ajax/get/users
+    defaults: { _controller: AppBundle:Ajax:users }
+
+ajax_cards:
+    path:     /ajax/get/cards
+    defaults: { _controller: AppBundle:Ajax:cards }

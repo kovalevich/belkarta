@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Card
  *
- * @ORM\Table()
+ * @ORM\Table(name="belkarta_card")
  * @ORM\Entity(repositoryClass="Belkarta\CardBundle\Entity\CardRepository")
  */
 class Card
@@ -23,9 +23,9 @@ class Card
     private $id;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="type", type="integer")
+     * @ORM\Column(name="type", type="string", length=255)
      */
     private $type;
 
@@ -44,7 +44,7 @@ class Card
     private $address;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Profile\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Profile\UserBundle\Entity\User", inversedBy="cards")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
@@ -61,7 +61,36 @@ class Card
      */
     private $updated;
 
+    /**
+     * @ORM\Column(name="payed", type="datetime", nullable=true)
+     */
+    private $payed;
 
+    /**
+     * @ORM\Column(name="sent", type="datetime", nullable=true)
+     */
+    private $sent;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="track", type="text", nullable=true)
+     */
+    private $track;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="price", type="integer")
+     */
+    private $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="text")
+     */
+    private $phone;
 
     /**
      * Get id
@@ -76,7 +105,7 @@ class Card
     /**
      * Set type
      *
-     * @param integer $type
+     * @param string $type
      * @return Card
      */
     public function setType($type)
@@ -89,7 +118,7 @@ class Card
     /**
      * Get type
      *
-     * @return integer 
+     * @return string
      */
     public function getType()
     {
@@ -189,6 +218,98 @@ class Card
     }
 
     /**
+     * Set payed
+     *
+     * @param \DateTime $payed
+     * @return Card
+     */
+    public function setPayed($payed)
+    {
+        $this->payed = $payed;
+
+        return $this;
+    }
+
+    /**
+     * Get payed
+     *
+     * @return \DateTime 
+     */
+    public function getPayed()
+    {
+        return $this->payed;
+    }
+
+    /**
+     * Set sent
+     *
+     * @param \DateTime $sent
+     * @return Card
+     */
+    public function setSent($sent)
+    {
+        $this->sent = $sent;
+
+        return $this;
+    }
+
+    /**
+     * Get sent
+     *
+     * @return \DateTime 
+     */
+    public function getSent()
+    {
+        return $this->sent;
+    }
+
+    /**
+     * Set track
+     *
+     * @param string $track
+     * @return Card
+     */
+    public function setTrack($track)
+    {
+        $this->track = $track;
+
+        return $this;
+    }
+
+    /**
+     * Get track
+     *
+     * @return string 
+     */
+    public function getTrack()
+    {
+        return $this->track;
+    }
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     * @return Card
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer 
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
      * Set user
      *
      * @param \Profile\UserBundle\Entity\User $user
@@ -209,5 +330,28 @@ class Card
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     * @return Card
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
     }
 }

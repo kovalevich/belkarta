@@ -1,0 +1,24 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+    <h2 class="style1">Заказ БЕЛКАРТА "{% if type == 1 %}CLASSIC{% else %}PLATINUM{% endif %}"</h2>
+    Укажите точный адрес. По этому адресу будет отправлена ваша карта заказным пакетом.
+    <div class="row">
+        <div class="col-sm-6">
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            {{ form_row(form.address, {'attr': {'class': 'input-sm', 'rows': 6}}) }}
+            {{ form_row(form.phone, {'attr': {'class': 'input-sm'}}) }}
+
+
+            <div>
+                {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }} &nbsp;
+                {{ form_widget(form.savelater, {'attr': {'class': 'btn btn-default'}}) }}
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <div class="clear"></div>
+
+{% endblock %}

@@ -1,10 +1,10 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
 {% block content %}
-<h2 class="style1">БЕЛКАРТА "{{ type|upper }}"</h2>
+<h2 class="style1">БЕЛКАРТА "{% if type == 1 %}CLASSIC{% else %}PLATINUM{% endif %}"</h2>
 <div>
     {{ publication.text|raw }}
 </div>
     <br/><br/>
-<a href="#" class="btn btn-1">КУПИТЬ КАРТУ</a>
+<a href="{{ path('belkarta_card_buy', {type: type}) }}" class="btn btn-danger btn-lg">КУПИТЬ КАРТУ {{ card.price }}$</a>
 {% endblock %}

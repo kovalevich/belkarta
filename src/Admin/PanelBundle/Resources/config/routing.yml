@@ -123,3 +123,32 @@ admin_catalog_generation_edit:
 admin_app_region_edit:
     path: /regions/{id}
     defaults: { _controller: AdminPanelBundle:Regions:edit, id: '' }
+
+admin_users_index:
+    path: /admin/users
+    defaults: { _controller: AdminPanelBundle:Users:index, id: '' }
+
+admin_users_edit:
+    path: /admin/users/edit/{id}
+    defaults: { _controller: AdminPanelBundle:Users:edit, id: '' }
+
+admin_users_delete:
+    path: /admin/users/delete/{id}
+    defaults: { _controller: AdminPanelBundle:Users:delete, id: '' }
+
+admin_users_edit_editable:
+    path: /admin/users/editable
+    defaults: { _controller: AdminPanelBundle:Edit:user }
+
+admin_cards_index:
+    path: /admin/cards
+    defaults: { _controller: AdminPanelBundle:Cards:index, id: '' }
+
+admin_cards_edit:
+    path: /admin/cards/edit/{id}
+    defaults: { _controller: AdminPanelBundle:Cards:edit }
+
+admin_cards_delete:
+    path: /admin/cards/delete/{id}
+    defaults: { _controller: AdminPanelBundle:Cards:delete }
+
