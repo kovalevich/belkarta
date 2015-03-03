@@ -37,6 +37,13 @@ class Company
     private $email;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="percent", type="integer")
+     */
+    private $percent;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255)
@@ -326,5 +333,28 @@ class Company
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set percent
+     *
+     * @param integer $percent
+     * @return Company
+     */
+    public function setPercent($percent)
+    {
+        $this->percent = $percent;
+
+        return $this;
+    }
+
+    /**
+     * Get percent
+     *
+     * @return integer 
+     */
+    public function getPercent()
+    {
+        return $this->percent;
     }
 }

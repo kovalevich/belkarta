@@ -1,0 +1,10 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+    <h2 class="style1">{{ company.name }}</h2>
+    <h3>Скидка: {{ company.percent }} %</h3>
+    <div>
+        {{ company.text|raw }}
+    </div>
+
+{% endblock %}

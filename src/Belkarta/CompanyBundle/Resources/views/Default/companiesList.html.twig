@@ -4,7 +4,7 @@
         {% for item in items %}
             <div class="col-sm-1">
                 {% if item.logo %}<img src="{{ item.logo.image.path }}" title="Логотип {{ item.name }}" class="img-responsive img-circle">{% endif %}
-                <a href="#">{{ item.name }}</a>
+                <a href="{{ path('belkarta_company', {id: item.id}) }}">{{ item.name }}</a>
             </div>
         {% endfor %}
     {% else %}

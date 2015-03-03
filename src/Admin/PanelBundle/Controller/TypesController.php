@@ -8,12 +8,31 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TypesController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $type = new Type();
+
+        $form = $this->createFormBuilder($type)
+            ->add('title', 'text', array(
+                'label' => 'Название типа',
+            ))
+            ->add('save', 'submit', array('label' => 'Добавить тип'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $type = $form->getData();
+            $em->persist($type);
+            $em->flush();
+        }
+
         $types = $em->getRepository('BelkartaCompanyBundle:Type')->findAll();
 
         return $this->render('AdminPanelBundle:Type:index.html.twig', array(
+            'form'  => $form->createView(),
             'types' => $types
         ));
     }

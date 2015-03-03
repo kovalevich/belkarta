@@ -21,6 +21,15 @@ class DefaultController extends Controller
         ));
     }
 
+    public function companyAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $company = $em->getRepository('BelkartaCompanyBundle:Company')->find($id);
+
+        return $this->render('BelkartaCompanyBundle:Default:company.html.twig', array(
+            'company'   => $company
+        ));
+    }
+
     public function createAction(Request $request)
     {
 

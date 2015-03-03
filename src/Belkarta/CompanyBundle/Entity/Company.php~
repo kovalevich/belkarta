@@ -37,6 +37,13 @@ class Company
     private $email;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="percent", type="integer")
+     */
+    private $percent;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255)
@@ -280,5 +287,51 @@ class Company
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Company
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Company
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }

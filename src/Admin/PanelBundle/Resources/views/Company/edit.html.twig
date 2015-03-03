@@ -27,7 +27,7 @@
             <h3>
                 Название: <a href="#" id="name" data-type="text" class="editable editable-title" data-pk="{{ company.id }}" data-title="Введите название бренда">{{ company.name }}</a>
             </h3>
-            Страница компании на сайте: <a href="" target="_blank">пока не работает</a>
+            Страница компании на сайте: <a href="{{ path('belkarta_company', {id: company.id}) }}" target="_blank">http://belkarta.com{{ path('belkarta_company', {id: company.id}) }}</a>
             <div class="row">
                 <div class="col-sm-8">
                     <div class="widget">
@@ -75,6 +75,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <tr>
+                                    <td>Скидка, %:</td>
+                                    <td>
+                                        <a href="#" id="percent" data-type="text" data-pk="{{ company.id }}" class="editable editable-title" data-title="Введите процент скидки">{{ company.percent }}</a></td>
+                                </tr>
                                 <tr>
                                     <td>Логотип:</td>
                                     <td>

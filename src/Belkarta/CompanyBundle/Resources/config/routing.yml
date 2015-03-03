@@ -9,3 +9,7 @@ belkarta_company_new:
 belkarta_company_created:
     path: /company/created
     defaults: { _controller: BelkartaCompanyBundle:Default:created }
+
+belkarta_company:
+    path:     /company/{id}
+    defaults: { _controller: BelkartaCompanyBundle:Default:company }
