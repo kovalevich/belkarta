@@ -1,0 +1,33 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Тип</th>
+        <th>Статус</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if items|length > 0 %}
+        {% for item in items %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>
+                    {{ ('types.card.' ~ item.type)|trans }}
+                </td>
+                <td>
+                    {{ ('status.card.' ~ item.status)|trans }}
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td colspan="3">У вас пока нет карт</td>
+        </tr>
+    {% endif %}
+
+    </tbody>
+</table>

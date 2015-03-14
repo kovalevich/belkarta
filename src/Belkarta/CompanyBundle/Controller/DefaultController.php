@@ -50,7 +50,10 @@ class DefaultController extends Controller
             ->add('email', 'email', array(
                 'label' => 'E-MAIL',
             ))
-            ->add('save', 'submit', array('label' => 'Добавить компанию'))
+            ->add('save', 'submit', array(
+                'label' => 'Добавить компанию',
+                'attr' => array('class'=>'btn-success')
+            ))
             ->getForm();
 
         $form->handleRequest($request);

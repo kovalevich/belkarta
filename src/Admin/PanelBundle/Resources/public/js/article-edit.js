@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('#editor').redactor({
         buttonSource: true,
         lang: 'ru',
-        imageUpload: '/adminpanel/api/upload',
+        imageUpload: images_upload_url,
         convertVideoLinks: true,
         minHeight: 600,
         maxHeight: 800,

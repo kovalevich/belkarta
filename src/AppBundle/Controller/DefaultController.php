@@ -10,7 +10,12 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('BlogPublicationsBundle:Publication');
+
         return $this->render('AppBundle:default:index.html.twig', array(
+            'news'      => $repository->findOneByShowInHome(1),
+            'news_list'      => $repository->findByShowInHome(1),
             'home_page' => true
         ));
     }

@@ -2,4 +2,20 @@
 
 {% block content %}
 {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 class="style1">Ваши карты</h2>
+            {{ include('BelkartaCardBundle::cardsTable.html.twig', { 'items': user.cards }) }}
+            <a href="{{ path('belkarta_card_new', {type: 'classic'}) }}" class="btn btn-success">Купить БелКарта CLASSIC</a> <a href="{{ path('belkarta_card_new', {type: 'platinum'}) }}" class="btn btn-danger">Купить БелКарта PLATINUM</a>
+        </div>
+        <div class="col-sm-5">
+            <h2 class="style1">Ваши партнеры</h2>
+            {% if(user.type < 2) %}
+                Для участия в партнерской программе вам необходимо приобрести <a href="{{ path('belkarta_card_new', {type: 'platinum'}) }}">карту "PLATINUM"</a>
+            {% else %}
+                Ваша партнерская ссылка: <a href="{{ path('fos_user_registration_register') }}?part={{ user.id }}">http://belkarta.com{{ path('fos_user_registration_register') }}?part={{ user.id }}</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="clear"></div>
 {% endblock content %}

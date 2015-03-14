@@ -36,13 +36,13 @@
                         <ul style="width: 200px">
                             <li><a href="{{ path('belkarta_card_new', {type: 'classic'}) }}">БелКарта CLASSIC</a></li>
                             <li><a href="{{ path('belkarta_card_new', {type: 'platinum'}) }}">БелКарта PLATINUM</a></li>
-                            <li><a href="{{ path('publication_view', {slug: 'partnerka'}) }}">Партнерская программа</a></li>
+                            <li><a href="{{ path('publication_view', {slug: 'akcii'}) }}">Акции</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Партнеры</a>
                         <ul style="width: 180px">
                             <li><a href="{{ path('belkarta_companies') }}">Скидки</a></li>
-                            <li><a href="{{ path('publication_view', {slug: 'akcii'}) }}">Акции</a></li>
+                            <li><a href="{{ path('publication_view', {slug: 'partnerka'}) }}">Партнерская программа</a></li>
                             <li><a href="{{ path('belkarta_company_new') }}">Стать партнером</a></li>
                         </ul>
                     </li>
@@ -54,8 +54,10 @@
             <div class="clear"></div>
             {% if home_page is defined %}
                 <div class="banner">
-                    <h2 class="style">БЕЛКАРТА это все, что вам нужно!</h2>
-                    <p class="para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+                    <h2 class="style">БЕЛКАРТА</h2>
+                    <p class="para">
+                        БЕЛКАРТА - дисконтная программа, объединяющая различные сферы услуг в единую дисконтную сеть, - в одну универсальную карту для значительной экономии Ваших средств.
+                    </p>
                 </div>
                 <div class="clear"></div>
             {% endif %}
@@ -82,65 +84,34 @@
                 <div class="f_grid">
                     <div class="grid1_of_1">
                         <div class="address">
-                            <p>p +64 9555 555</p>
-                            <p>F +64 9555 555</p>
-                            <p>E <a href="">info@email.com</a> </p>
-                            <h3 class="top">Address</h3>
-                            <p class="top">Template by <a href="http://w3layouts.com">w3layouts</a></p>
+                            <p>+37533 3860728 MTS</p>
+                            <p>+37529 3392670 Velcom</p>
+                            <p><a href="mailto:belkarta.com@gmail.com">belkarta.com@gmail.com</a> </p>
                         </div>
                     </div>
                     <div class="grid1_of_2">
                         <div class="f_grid2 left">
-                            <h3>Services</h3>
+                            <h3>О клубе</h3>
                             <ul class="f_nav">
-                                <li><a href="">Commercial</a></li>
-                                <li><a href="">Distrubution</a></li>
-                                <li><a href="">Gas</a></li>
-                                <li><a href="">Generation</a></li>
-                                <li><a href="">Industrial</a></li>
-                                <li><a href="">Telecomms</a></li>
-                                <li><a href="">Transmition</a></li>
+                                <li><a href="{{ path('publication_view', {slug: 'o-proekte'}) }}">О проекте</a></li>
+                                <li><a href="{{ path('publication_view', {slug: 'partneram'}) }}">Партнерам</a></li>
+                                <li><a href="{{ path('publication_view', {slug: 'klientam'}) }}">Клиентам</a></li>
                             </ul>
                         </div>
                         <div class="f_grid2 left">
-                            <h3>Markets</h3>
+                            <h3>Карты скидок</h3>
                             <ul class="f_nav">
-                                <li><a href="">Commercial</a></li>
-                                <li><a href="">Industrial</a></li>
-                                <li><a href="">Infrastructure</a></li>
-                                <li><a href="">Resources</a></li>
-                                <li><a href="">Utilities</a></li>
+                                <li><a href="{{ path('belkarta_card_new', {type: 'classic'}) }}">БелКарта CLASSIC</a></li>
+                                <li><a href="{{ path('belkarta_card_new', {type: 'platinum'}) }}">БелКарта PLATINUM</a></li>
+                                <li><a href="{{ path('publication_view', {slug: 'akcii'}) }}">Акции</a></li>
                             </ul>
                         </div>
                         <div class="f_grid2 left">
-                            <h3>HSEWQ</h3>
+                            <h3>Партнёрам</h3>
                             <ul class="f_nav">
-                                <li><a href="">Health &</a></li>
-                                <li><a href="">Safety</a></li>
-                                <li><a href="">Environment</a></li>
-                                <li><a href="">Quality</a></li>
-                            </ul>
-                        </div>
-                        <div class="f_grid2 left hide">
-                            <h3>About</h3>
-                            <ul class="f_nav">
-                                <li><a href="">Histroy</a></li>
-                                <li><a href="">Structure</a></li>
-                                <li><a href="">People</a></li>
-                                <li><a href="">CSR</a></li>
-                                <li><a href="">Locations</a></li>
-                                <li><a href="">PPV</a></li>
-                            </ul>
-                        </div>
-                        <div class="f_grid2 left hide">
-                            <h3>Careers</h3>
-                            <ul class="f_nav">
-                                <li><a href="">Who we are</a></li>
-                                <li><a href="">Benefits</a></li>
-                                <li><a href="">Programmes</a></li>
-                                <li><a href="">Our People</a></li>
-                                <li><a href="">Roles/</a></li>
-                                <li><a href="">Vacancies</a></li>
+                                <li><a href="{{ path('belkarta_companies') }}">Скидки</a></li>
+                                <li><a href="{{ path('publication_view', {slug: 'partnerka'}) }}">Партнерская программа</a></li>
+                                <li><a href="{{ path('belkarta_company_new') }}">Стать партнером</a></li>
                             </ul>
                         </div>
                     </div>
