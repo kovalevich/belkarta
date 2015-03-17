@@ -2,12 +2,8 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-12">
             {{ include('BlogPublicationsBundle::articleView.html.twig', { 'item': news }) }}
-        </div>
-        <div class="col-sm-3">
-            <h3 style="font-size: 1.5em; color: #84B3B9; margin-bottom: 15px;">Последние новости</h3>
-            {{ include('BlogPublicationsBundle::articlesList.html.twig', { 'items': news_list }) }}
         </div>
     </div>
     <div class="clear"></div>
