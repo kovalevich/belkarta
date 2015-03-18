@@ -2,8 +2,8 @@
     <div class="row">
     {% if items|length > 0 %}
         {% for item in items %}
-            <div class="col-sm-1">
-                {% if item.logo %}<img src="{{ item.logo.image.path }}" title="Логотип {{ item.name }}" class="img-responsive img-circle">{% endif %}
+            <div class="col-sm-2" style="min-height: 230px;">
+                {% if item.logo %}<img src="{{ item.logo.image.path }}" title="Логотип {{ item.name }}" class="img-responsive img-thumbnail">{% endif %}
                 <a href="{{ path('belkarta_company', {id: item.id}) }}">{{ item.name }}</a>
             </div>
         {% endfor %}

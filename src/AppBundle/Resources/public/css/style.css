@@ -28,13 +28,10 @@ nav.vertical ul li{	display:block;}/* vertical menu */
 nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*end reset*/
-@font-face {
-      font-family: 'latolight';
-      src: url(../fonts/lato-lig-webfont.ttf) format('truetype');
-}
+@import url(http://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic,cyrillic-ext);
 body {
-	font-family: 'latolight';
-	font-size: 1.1em;
+    font-family: 'Roboto', sans-serif;
+	font-size: 1em;
 	background: #ffffff;
 }
 .block{
@@ -63,7 +60,6 @@ body {
 .menu{
 	float: left;
 	margin-left: -40px;
-    font-family: 'latolight';
 }
 .toggleMenu {
     display:  none;
@@ -188,7 +184,6 @@ body {
 	margin: 11% 0 44%;
 }
 h2.style{
-	font-family: 'latolight';
 	font-size: 3.5em;
 	color: #ffffff;
 	text-shadow: 0 1px 0 rgb(34, 55, 60);
@@ -196,7 +191,6 @@ h2.style{
 }
 p.para{
 	margin-top:4%;
-	font-family: 'latolight';
 	font-size: 1em;
 	color: #fff;
 	text-shadow: 0 1px 0 rgb(152, 153, 153);
@@ -410,7 +404,6 @@ p.para1{
 	-o-box-shadow: 0px 40px 20px -40px rgb(133, 133, 133);
 }
 h2.style1{
-	font-family: 'latolight';
 	font-size: 2.5em;
 	color: #84B3B9;
 	text-shadow: 0 1px 0 rgb(255, 255, 255);
