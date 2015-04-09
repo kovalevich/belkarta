@@ -1,10 +1,23 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
 {% block content %}
+
     <h2 class="style1">{{ company.name }}</h2>
-    <h3>Скидка: {{ company.percent }} %</h3>
-    <div>
-        {{ company.text|raw }}
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Скидка: {{ company.percent }} %</h3>
+            <div>
+                {{ company.text|raw }}
+            </div>
+        </div>
+        <div class="col-sm-5">
+            {%  if(company.coordinates) %}
+                <h3>Как найти {{ company.name }}</h3>
+                <br/>
+                <img src="http://static-maps.yandex.ru/1.x/?ll={{ company.coordinates }}&size=450,450&z=13&l=map&pt={{ company.coordinates }},pm2wtl">
+            {% endif %}
+        </div>
     </div>
+    <div class="clear"></div>
 
 {% endblock %}

@@ -65,6 +65,20 @@ class Company
     private $cities;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="text", nullable=true)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="coordinates", type="text", nullable=true)
+     */
+    private $coordinates;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Files\ImagesBundle\Entity\BrandLogo")
      * @ORM\JoinColumn(name="logo_id", referencedColumnName="id", nullable=true)
      */
@@ -356,5 +370,54 @@ class Company
     public function getPercent()
     {
         return $this->percent;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     * @return Company
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        $geocode = json_decode(file_get_contents('http://geocode-maps.yandex.ru/1.x/?geocode=' . $address . '&format=json'));
+        @$this->setCoordinates($geocode->response->GeoObjectCollection->featureMember[0]->GeoObject->Point->pos);
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string 
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set coordinates
+     *
+     * @param string $coordinates
+     * @return Company
+     */
+    public function setCoordinates($coordinates)
+    {
+        $this->coordinates = str_replace(' ', ',', $coordinates);
+
+        return $this;
+    }
+
+    /**
+     * Get coordinates
+     *
+     * @return string 
+     */
+    public function getCoordinates()
+    {
+        return $this->coordinates;
     }
 }

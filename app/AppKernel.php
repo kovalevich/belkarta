@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new Belkarta\CompanyBundle\BelkartaCompanyBundle(),
             new Belkarta\CardBundle\BelkartaCardBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

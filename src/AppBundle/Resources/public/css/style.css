@@ -50,6 +50,7 @@ body {
 /* start header */
 .header_bg{
 	background: url('../images/bg.jpg') no-repeat;
+    height: 890px;
 }
 .logo {
 	position: absolute;

@@ -12,10 +12,15 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('BlogPublicationsBundle:Publication');
+        $news = $repository->findBy(
+            array('showInHome' => true),
+            array('created' => 'DESC'),
+            5,
+            null
+        );
 
         return $this->render('AppBundle:default:index.html.twig', array(
-            'news'      => $repository->findOneByShowInHome(1),
-            'news_list'      => $repository->findByShowInHome(1),
+            'news'      => $news,
             'home_page' => true
         ));
     }

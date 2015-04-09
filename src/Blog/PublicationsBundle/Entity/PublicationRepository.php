@@ -40,4 +40,16 @@ class PublicationRepository extends EntityRepository
 
         return $query->getQuery()->getOneOrNullResult();
     }
+
+    public function getPage($category_id = null)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM BlogPublicationsBundle:Publication p
+                WHERE p.category = :category_id
+                ORDER BY p.created DESC'
+            )->setParameter('category_id', $category_id);
+
+        return $query;
+    }
 }

@@ -1,9 +1,11 @@
 {% if items|length > 0 %}
-    <ul>
-        {% for item in items %}
-            <li><a href="{{ path('publication_view', {slug: item.slug}) }}">{{ item.title }}</a></li>
-        {% endfor %}
-    </ul>
+    {% for item in items %}
+        <div class="news-item">
+            <h3 style="font-size: 1.5em; margin: 15px 0px;"><a href="{{ path('publication_view', {slug: item.slug}) }}">{{ item.title }}</a></h3>
+            {{ item.text | truncate(50, true, '...') | raw }}
+            <a href="{{ path('publication_view', {slug: item.slug}) }}">читать далее</a>
+        </div>
+    {% endfor %}
 {% else %}
     Нет публикаций
 {% endif %}

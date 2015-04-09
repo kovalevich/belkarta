@@ -65,6 +65,7 @@
     </div>
 </div>
 <!-- start content -->
+{% if home_page is defined %}{% else %}
 <div class="content_bg">
     <div class="wrap">
         <div class="wrapper">
@@ -76,6 +77,7 @@
         </div>
     </div>
 </div>
+{% endif %}
 <!-- start footer -->
 <div class="footer_bg">
     <div class="wrap">
@@ -131,6 +133,10 @@
     <script src="{{ asset('bundles/app/js/plugins/datatable/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('bundles/app/js/plugins/datatable/dataTables.bootstrap.js') }}"></script>
 {% endblock %}
+
+{% if app.environment == 'prod' %}
+    {{ include('AppBundle::metrika.html.twig') }}
+{% endif %}
 
 </body>
 </html>

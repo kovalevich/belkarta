@@ -25,6 +25,8 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $company = $em->getRepository('BelkartaCompanyBundle:Company')->find($id);
 
+        //foreach($company->getCities())
+
         return $this->render('BelkartaCompanyBundle:Default:company.html.twig', array(
             'company'   => $company
         ));

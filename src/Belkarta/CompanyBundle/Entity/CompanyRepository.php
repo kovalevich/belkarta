@@ -45,7 +45,8 @@ class CompanyRepository extends EntityRepository
     {
         $query = $this->createQueryBuilder('p')
             ->select('p')
-            ->join('p.type', 't');
+            ->join('p.type', 't')
+            ->orderBy('p.created', 'desc');
 
         if($city && $city !== 'all')
             $query->andWhere($query->expr()->like('p.cities', ':city'))
