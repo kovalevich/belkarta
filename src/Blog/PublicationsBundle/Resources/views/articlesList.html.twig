@@ -3,7 +3,6 @@
         <div class="news-item">
             <h3 style="font-size: 1.5em; margin: 15px 0px;"><a href="{{ path('publication_view', {slug: item.slug}) }}">{{ item.title }}</a></h3>
             {{ item.text | truncate(50, true, '...') | raw }}
-            <a href="{{ path('publication_view', {slug: item.slug}) }}">читать далее</a>
         </div>
     {% endfor %}
 {% else %}

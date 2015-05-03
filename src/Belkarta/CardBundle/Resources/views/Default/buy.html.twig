@@ -2,13 +2,15 @@
 
 {% block content %}
     <h2 class="style1">Заказ БЕЛКАРТА "{% if type == 1 %}CLASSIC{% else %}PLATINUM{% endif %}"</h2>
-    Укажите точный адрес. По этому адресу будет отправлена ваша карта заказным пакетом.
+
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-8">
+            <p style="margin-bottom: 10px;">* покупая БЕЛКАРТА, Вы соглашаетесь с "<a href="{{ path('publication_view', {slug: dogovor.slug}) }}">{{ dogovor.title }}</a>"</p>
             {{ form_start(form) }}
             {{ form_errors(form) }}
 
             {{ form_row(form.address, {'attr': {'class': 'input-sm', 'rows': 6}}) }}
+            <span style="font-size: 0.8em; color: #777;">укажите свой полный адрес (область, город, улица, дом, квартира и индекс). Адрес проверьте внимательно - по нему будет отправлена Ваша карта!</span><br/><br/>
             {{ form_row(form.phone, {'attr': {'class': 'input-sm'}}) }}
 
 
@@ -18,7 +20,20 @@
             </div>
             {{ form_end(form) }}
         </div>
+        <div class="col-sm-3" style="margin-bottom: 5px;">
+            {% if type == 1 %}
+                {% set type_name = 'classic' %}
+            {% else %}
+                {% set type_name = 'platinum' %}
+            {% endif %}
+            <img src="{{ asset('bundles/belkartacard/images/' ~ type_name ~ '.jpg') }}"/>
+        </div>
+        <div class="col-sm-3">
+            <img src="{{ asset('bundles/belkartacard/images/belkarta_side.jpg') }}"/>
+        </div>
     </div>
     <div class="clear"></div>
+
+    <span style="font-size: 0.8em; color: #777;">Платежи принимаются с помощью платежной системы <a href="http://www.webpay.by" target="_blank">www.webpay.by</a></span>
 
 {% endblock %}

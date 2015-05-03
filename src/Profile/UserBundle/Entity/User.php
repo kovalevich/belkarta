@@ -39,6 +39,17 @@ class User extends BaseUser
      */
     protected $cards;
 
+    /**
+     * @ORM\OneToMany(targetEntity="User", mappedBy="refer")
+     */
+    protected $referals;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="referals")
+     * @ORM\JoinColumn(name="refer", referencedColumnName="id")
+     */
+    protected $refer;
+
     public function __construct()
     {
         parent::__construct();
@@ -133,5 +144,61 @@ class User extends BaseUser
     public function getCards()
     {
         return $this->cards;
+    }
+
+    /**
+     * Add referals
+     *
+     * @param \Profile\UserBundle\Entity\User $referals
+     * @return User
+     */
+    public function addReferal(\Profile\UserBundle\Entity\User $referals)
+    {
+        $this->referals[] = $referals;
+
+        return $this;
+    }
+
+    /**
+     * Remove referals
+     *
+     * @param \Profile\UserBundle\Entity\User $referals
+     */
+    public function removeReferal(\Profile\UserBundle\Entity\User $referals)
+    {
+        $this->referals->removeElement($referals);
+    }
+
+    /**
+     * Get referals
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReferals()
+    {
+        return $this->referals;
+    }
+
+    /**
+     * Set refer
+     *
+     * @param \Profile\UserBundle\Entity\User $refer
+     * @return User
+     */
+    public function setRefer(\Profile\UserBundle\Entity\User $refer = null)
+    {
+        $this->refer = $refer;
+
+        return $this;
+    }
+
+    /**
+     * Get refer
+     *
+     * @return \Profile\UserBundle\Entity\User 
+     */
+    public function getRefer()
+    {
+        return $this->refer;
     }
 }

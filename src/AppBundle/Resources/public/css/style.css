@@ -181,7 +181,7 @@ body {
 }
 /* start banner_text */
 .banner{
-	width: 42%;
+	width: 80%;
 	margin: 11% 0 44%;
 }
 h2.style{
@@ -726,7 +726,7 @@ x:-o-prefocus, .lb-overlay img {
 		width:95%;
 	}
 	.banner {
-		width: 45%;
+		width: 80%;
 	}
 	.ca-nav span {
 		width: 34px;
@@ -3057,6 +3057,19 @@ textarea.input-lg,select[multiple].input-lg{
 
 }
 
+.news-on-home-page {
+	padding: 10px;
+	background: rgba(0,0,0,0.4);
+	color: #e6e6e6;
+}
 
+.news-on-home-page a {
+	color: #ffffff;
+	border-bottom: 1px dotted;
+}
+
+.news-item {
+	margin-bottom: 20px;
+}
 
 

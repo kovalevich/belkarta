@@ -18,3 +18,11 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    webpay.wsb_storeid:    ~
+    webpay.wsb_store:  ~
+    webpay.secretkey: ~
+    webpay.test: 1
+
+    cource: ~
+

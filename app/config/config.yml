@@ -31,6 +31,11 @@ twig:
     strict_variables: "%kernel.debug%"
     form:
         resources: ['bootstrap_3_layout.html.twig']
+    globals:
+        webpay_wsb_storeid: %webpay.wsb_storeid%
+        webpay_wsb_store: %webpay.wsb_store%
+        webpay_test: %webpay.test%
+        cource: %cource%
 
 # Assetic Configuration
 assetic:

@@ -2,9 +2,30 @@
 
 {% block content %}
 <h2 class="style1">БЕЛКАРТА "{% if type == 1 %}CLASSIC{% else %}PLATINUM{% endif %}"</h2>
-<div>
-    {{ publication.text|raw }}
+<div class="row">
+    <div class="col-sm-8">
+        {{ publication.text|raw }}
+
+        <br/>
+        <br/>
+    
+        <a href="{{ path('belkarta_card_buy', {type: type}) }}" class="btn btn-danger btn-lg">КУПИТЬ КАРТУ {{ card.price }}$</a>
+    </div>
+    <div class="col-sm-3">
+        <div class="row">
+            <div class="col-sm-12" style="margin-bottom: 5px;">
+                {% if type == 1 %}
+                    {% set type_name = 'classic' %}
+                {% else %}
+                    {% set type_name = 'platinum' %}
+                {% endif %}
+                <img src="{{ asset('bundles/belkartacard/images/' ~ type_name ~ '.jpg') }}"/>
+            </div>
+            <div class="col-sm-12">
+                <img src="{{ asset('bundles/belkartacard/images/belkarta_side.jpg') }}"/>
+            </div>
+        </div>
+    </div>
 </div>
-    <br/><br/>
-<a href="{{ path('belkarta_card_buy', {type: type}) }}" class="btn btn-danger btn-lg">КУПИТЬ КАРТУ {{ card.price }}$</a>
+<div class="clear"></div>
 {% endblock %}

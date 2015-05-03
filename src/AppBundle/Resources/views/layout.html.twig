@@ -54,10 +54,17 @@
             <div class="clear"></div>
             {% if home_page is defined %}
                 <div class="banner">
-                    <h2 class="style">ЭКОНОМЬТЕ С УДОВОЛЬСТВИЕМ</h2>
-                    <p class="para">
-                        БЕЛКАРТА - дисконтная программа, объединяющая различные сферы услуг в единую дисконтную сеть, - в одну универсальную карту для значительной экономии Ваших средств.
-                    </p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                        <div class="news-on-home-page">
+                            <h2 class="style">Последние новости <a href="{{ path('category_view', {slug: 'novosti'}) }}" style="font-size: 0.4em; letter-spacing: 0px; color: #fff; padding: 3px 10px; border-radius: 2px; background-color: #4ba84b; border-color: #439643;">читать все новости</a></h2>
+                            
+                                {{ include('BlogPublicationsBundle::articlesList.html.twig', { 'items': news }) }}
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="clear"></div>
                 </div>
                 <div class="clear"></div>
             {% endif %}
@@ -115,6 +122,11 @@
                                 <li><a href="{{ path('publication_view', {slug: 'partnerka'}) }}">Партнерская программа</a></li>
                                 <li><a href="{{ path('belkarta_company_new') }}">Стать партнером</a></li>
                             </ul>
+                        </div>
+                        <div class="f_grid2_left">
+                            <img src="{{ asset('bundles/app/images/visa.jpg') }}" height="30px" /> &nbsp;&nbsp;
+                            <img src="{{ asset('bundles/app/images/mastercard.JPG') }}" height="30px" /> &nbsp;&nbsp;
+                            <img src="{{ asset('bundles/app/images/webpay.JPG') }}" height="30px" /> &nbsp;&nbsp;
                         </div>
                     </div>
                     <div class="clear"></div>

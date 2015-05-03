@@ -31,6 +31,7 @@ class DefaultController extends Controller
         $type = $type == 1 ? 1 : 2;
 
         $em = $this->getDoctrine()->getManager();
+        $dogovor = $em->getRepository('BlogPublicationsBundle:Publication')->findOneBySlug('dogovor-1');
         $card = $em->getRepository('BelkartaCardBundle:Card')->findOneByType('card-' . $type);
 
         $new_card = new Card();
@@ -69,7 +70,8 @@ class DefaultController extends Controller
         return $this->render('BelkartaCardBundle:Default:buy.html.twig', array(
             'type'          => $type,
             'card'          => $card,
-            'form'          => $form->createView()
+            'form'          => $form->createView(),
+            'dogovor'       => $dogovor
         ));
     }
 
@@ -78,8 +80,42 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $card = $em->getRepository('BelkartaCardBundle:Card')->find($id);
 
+        $seed = time();
+        $signature = sha1(
+            $seed .
+            $this->container->getParameter('webpay.wsb_storeid') .
+            $card->getId() .
+            $this->container->getParameter('webpay.test') .
+            'BYR'.
+            $card->getPrice() * $this->container->getParameter('cource').
+            $this->container->getParameter('webpay.secretkey')
+        );
+
         return $this->render('BelkartaCardBundle:Default:payment.html.twig', array(
-            'card'          => $card
+            'card'          => $card,
+            'seed'          => $seed,
+            'signature'     => $signature
         ));
+    }
+
+    public function paymentsuccessAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $card = $em->getRepository('BelkartaCardBundle:Card')->find($id);
+
+        if($card) {
+            $card->setStatus(1);
+
+            if($card->getType() == 2) {
+                $user = $em->getRepository('ProfileUserBundle:User')->find($card->getUser()->getId());
+                $user->setType(2);
+                $em->persist($user);
+            }
+
+            $em->persist($card);
+            $em->flush();
+        }
+
+        return $this->render('BelkartaCardBundle:Default:paymentsuccess.html.twig');
     }
 }

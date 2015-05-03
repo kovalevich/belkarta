@@ -2,23 +2,24 @@
 
 {% block content %}
 <div class="hidden">
-    <form action="https://payment.webpay.by" method="post" id="payform">
+    <form action="{% if webpay_test == 0%}https://payment.webpay.by{% else %}https://securesandbox.webpay.by{% endif %}" method="post" id="payform">
         <input type="hidden" name="*scart">
         <input type="hidden" name="wsb_version" value="2">
         <input type="hidden" name="wsb_language_id" value="russian">
-        <input type="hidden" name="wsb_storeid" value="<?php echo $this->config->webpay->wsb_storeid ?>">
-        <input type="hidden" name="wsb_store" value="<?php echo $this->config->webpay->wsb_store ?>">
-        <input type="hidden" name="wsb_order_num" value="<?php echo $this->order_id ?>">
+        <input type="hidden" name="wsb_storeid" value="{{ webpay_wsb_storeid }}">
+        <input type="hidden" name="wsb_store" value="{{ webpay_wsb_store }}">
+        <input type="hidden" name="wsb_order_num" value="{{ card.id }}">
         <input type="hidden" name="wsb_currency_id" value="BYR">
-        <input type="hidden" name="wsb_seed" value="<?php echo $this->seed ?>">
-        <input type="hidden" name="wsb_return_url" value="http://diplomov.by/payment/ok/type/webpay">
-        <input type="hidden" name="wsb_cancel_return_url" value="http://diplomov.by/room/payment/order/<?php echo $this->order_id ?>">
-        <input type="hidden" name="wsb_notify_url" value="http://diplomov.by/payment/ok/type/webpay">
-        <input type="hidden" name="wsb_invoice_item_name[0]" value="<?php echo $this->operation ?>">
+        <input type="hidden" name="wsb_seed" value="{{ seed }}">
+        <input type="hidden" name="wsb_return_url" value="http://belkarta.com{{ path('belkarta_payment_success', { id: card.id }) }}">
+        <input type="hidden" name="wsb_cancel_return_url" value="http://belkarta.com{{ path('fos_user_profile_show') }}">
+        <input type="hidden" name="wsb_notify_url" value="http://belkarta.com{{ path('belkarta_payment_success', { id: card.id }) }}">
+        <input type="hidden" name="wsb_invoice_item_name[0]" value="Покупка БЕЛКАРТА {% if card.type == 1 %}CLASSIC{% else %}PLATINUM{% endif %}">
+        <input type="hidden" name="wsb_test" value="{{ webpay_test }}">
         <input type="hidden" name="wsb_invoice_item_quantity[0]" value="1">
-        <input type="hidden" name="wsb_invoice_item_price[0]" value="<?php echo $this->summ ?>">
-        <input type="hidden" name="wsb_total" value="<?php echo $this->summ ?>" >
-        <input type="hidden" name="wsb_signature" value="<?php echo $this->signature ?>" >
+        <input type="hidden" name="wsb_invoice_item_price[0]" value="{{card.price*cource}}">
+        <input type="hidden" name="wsb_total" value="{{card.price*cource}}" >
+        <input type="hidden" name="wsb_signature" value="{{ signature }}" >
     </form>
 </div>
 <div class="main-wrapp">

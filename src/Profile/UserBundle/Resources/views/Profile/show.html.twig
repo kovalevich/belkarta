@@ -13,7 +13,12 @@
             {% if(user.type < 2) %}
                 Для участия в партнерской программе вам необходимо приобрести <a href="{{ path('belkarta_card_new', {type: 'platinum'}) }}">карту "PLATINUM"</a>
             {% else %}
-                Ваша партнерская ссылка: <a href="{{ path('fos_user_registration_register') }}?part={{ user.id }}">http://belkarta.com{{ path('fos_user_registration_register') }}?part={{ user.id }}</a>
+                {{ include('ProfileUserBundle::usersTable.html.twig', { 'items': user.referals }) }}
+
+                <div class="news-on-home-page">
+                    <h3 class="style1">Ваша партнерская ссылка</h3>
+                    <a href="{{ path('profile_user_registration_by_refer', {refer_code: user.id}) }}">http://belkarta.com{{ path('profile_user_registration_by_refer', {refer_code: user.id}) }}</a>
+                </div>
             {% endif %}
         </div>
     </div>

@@ -9,3 +9,9 @@ belkarta_card_buy:
 belkarta_payment_start:
     path: /carta/payment/{id}
     defaults: { _controller: BelkartaCardBundle:Default:payment }
+
+belkarta_payment_success:
+    path: /carta/paymentsuccess/{id}
+    defaults: { _controller: BelkartaCardBundle:Default:paymentsuccess }
+    requirements:
+        id:  \d+
