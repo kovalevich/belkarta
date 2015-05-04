@@ -34,6 +34,16 @@ body {
 	font-size: 1em;
 	background: #ffffff;
 }
+.company-title{
+	border-bottom: 2px dotted #3d3e3e;
+	margin-bottom: 10px;
+	padding-left: 0px;
+}
+.company-title a{
+	text-transform: uppercase;
+	color: #3d3e3e;
+	font-size: 2em;
+}
 .block{
     margin-top: 20px;
 }

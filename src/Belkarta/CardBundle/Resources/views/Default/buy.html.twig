@@ -20,7 +20,7 @@
             </div>
             {{ form_end(form) }}
         </div>
-        <div class="col-sm-3" style="margin-bottom: 5px;">
+        <div class="col-sm-3" style="margin-left: 23px; margin-bottom: 5px;">
             {% if type == 1 %}
                 {% set type_name = 'classic' %}
             {% else %}
@@ -28,7 +28,7 @@
             {% endif %}
             <img src="{{ asset('bundles/belkartacard/images/' ~ type_name ~ '.jpg') }}"/>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3" style="margin-left: 23px;">
             <img src="{{ asset('bundles/belkartacard/images/belkarta_side.jpg') }}"/>
         </div>
     </div>
