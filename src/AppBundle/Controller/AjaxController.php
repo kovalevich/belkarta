@@ -204,6 +204,7 @@ class AjaxController extends Controller
         $cards = $repository->getCardsWithParams($search, $request->get('length'), $request->get('start'), $order);
 
         foreach($cards as $card){
+            if($card->getType() == 'card-2' || $card->getType() == 'card-1') continue;
             $status = '-';
             switch($card->getStatus()){
                 case '0':
@@ -223,9 +224,11 @@ class AjaxController extends Controller
             $type = '';
             switch($card->getType()){
                 case 'card-2':
+                    continue;
                     $type = '<span style="color: red">*classic</span>';
                     break;
                 case 'card-1':
+                    continue;
                     $type = '<span style="color: red">*platinum</span>';
                     break;
                 case '1':
@@ -237,7 +240,7 @@ class AjaxController extends Controller
             }
             $arr[] = array(
                 'id'        => $card->getId(),
-                'user'      => $card->getUser()->getUserName(),
+                'user'      => $card->getUser() ? $card->getUser()->getUserName() : '-',
                 'type'      => $type,
                 'phone'     => $card->getPhone(),
                 'address'   => $card->getAddress(),

@@ -17,8 +17,8 @@
         <input type="hidden" name="wsb_invoice_item_name[0]" value="Покупка БЕЛКАРТА {% if card.type == 1 %}CLASSIC{% else %}PLATINUM{% endif %}">
         <input type="hidden" name="wsb_test" value="{{ webpay_test }}">
         <input type="hidden" name="wsb_invoice_item_quantity[0]" value="1">
-        <input type="hidden" name="wsb_invoice_item_price[0]" value="{{card.price*cource}}">
-        <input type="hidden" name="wsb_total" value="{{card.price*cource}}" >
+        <input type="hidden" name="wsb_invoice_item_price[0]" value="{{card.price}}">
+        <input type="hidden" name="wsb_total" value="{{card.price}}" >
         <input type="hidden" name="wsb_signature" value="{{ signature }}" >
     </form>
 </div>

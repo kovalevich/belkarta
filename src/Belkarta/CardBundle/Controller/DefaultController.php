@@ -42,7 +42,7 @@ class DefaultController extends Controller
             ->add('phone', 'text', array(
                 'label' => 'Телефон для связи',
             ))
-            ->add('save', 'submit', array('label' => 'Перейти к оплате', ))
+            ->add('save', 'submit', array('label' => 'Перейти к оплате ' . $card->getPrice() . ' руб.', ))
             ->add('savelater', 'submit', array('label' => 'Оплатить позже', ))
             ->getForm();
 
@@ -87,7 +87,7 @@ class DefaultController extends Controller
             $card->getId() .
             $this->container->getParameter('webpay.test') .
             'BYR'.
-            $card->getPrice() * $this->container->getParameter('cource').
+            $card->getPrice() .
             $this->container->getParameter('webpay.secretkey')
         );
 
