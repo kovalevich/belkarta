@@ -12,8 +12,11 @@
         </div>
         <div class="col-sm-8">
             <div class="companies">
-                {{ include('BelkartaCompanyBundle:Default:companiesList.html.twig', { 'items': companies }) }}
+                {{ include('BelkartaCompanyBundle:Default:companiesList.html.twig', { 'items': pagination }) }}
+
+                {{ knp_pagination_render(pagination) }}
             </div>
+
         </div>
     </div>
     <div class="clear"></div>
@@ -26,7 +29,7 @@
     <script src="{{ asset('bundles/app/js/plugins/bootstrap-editable/bootstrap-editable.min.js') }}"></script>
 
     <script type="text/javascript">
-        var url = '{{ path('belkarta_companies') }}';
+        var url = '{{ path('belkarta_companies', {page: 1}) }}';
         $(document).ready(function() {
             $('.editable').editable({
 

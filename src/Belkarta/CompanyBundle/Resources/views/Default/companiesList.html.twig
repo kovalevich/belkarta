@@ -14,7 +14,7 @@
                     {% if item.logo %}<a href="{{ path('belkarta_company', {id: item.id}) }}"><img src="{{ item.logo.image.path }}" title="Логотип {{ item.name }}" class="img-responsive img-thumbnail"></a>{% endif %}
                 </div>
                 <div class="col-sm-7">
-                    {{ item.text|raw }}
+                    {{ item.text | truncate(400, true, '<a href="' ~  path('belkarta_company', {id: item.id}) ~ '"> &nbsp;...читать далее</a>') | raw }}
                 </div>
             </div>
         {% endfor %}

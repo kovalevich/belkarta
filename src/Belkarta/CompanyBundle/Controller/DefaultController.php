@@ -8,16 +8,30 @@ use Belkarta\CompanyBundle\Entity\Company;
 
 class DefaultController extends Controller
 {
-    public function indexAction(Request $request, $type, $city){
+    public function indexAction(Request $request, $page, $type, $city){
         $em = $this->getDoctrine()->getManager();
         $types = $em->getRepository('BelkartaCompanyBundle:Type')->findAll();
         $companies = $em->getRepository('BelkartaCompanyBundle:Company')->findAllByParams($type, $city);
+
+        $limit = 2;
+        $page = $request->get('page');
+
+        if(!is_numeric($page) || $page < 1) $page = 1;
+
+        $query = $em->getRepository('BelkartaCompanyBundle:Company')->getPage($type, $city);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $page,
+            $limit
+        );
 
         return $this->render('BelkartaCompanyBundle:Default:index.html.twig', array(
             'type'      => $type == 'all' ? $type : $em->getRepository('BelkartaCompanyBundle:Type')->find($type),
             'city'      => $city,
             'types'     => $types,
-            'companies' => $companies
+            'pagination'    => $pagination
         ));
     }
 

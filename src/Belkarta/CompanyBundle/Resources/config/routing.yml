@@ -1,5 +1,5 @@
 belkarta_companies:
-    path:     /catalog/{type}/{city}
+    path:     /catalog/{page}/{type}/{city}
     defaults: { _controller: BelkartaCompanyBundle:Default:index, type: 'all', city: 'all' }
 
 belkarta_company_new:

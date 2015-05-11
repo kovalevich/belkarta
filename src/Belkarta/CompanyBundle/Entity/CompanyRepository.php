@@ -12,6 +12,26 @@ use Doctrine\ORM\EntityRepository;
  */
 class CompanyRepository extends EntityRepository
 {
+
+    public function getPage($type = null, $city = null)
+    {
+
+        $query = $this->createQueryBuilder('p')
+            ->select('p')
+            ->join('p.type', 't')
+            ->orderBy('p.created', 'desc');
+
+        if($city && $city !== 'all')
+            $query->andWhere($query->expr()->like('p.cities', ':city'))
+                ->setParameter('city', '%' . $city . '%');
+
+        if($type && $type !== 'all')
+            $query->andWhere('t.id = :type')
+                ->setParameter('type', $type);
+
+        return $query;
+    }
+
     public function getCompaniesWithParams($search, $limit = 10, $from = 1, $order = null)
     {
         $query = $this->createQueryBuilder('p')
