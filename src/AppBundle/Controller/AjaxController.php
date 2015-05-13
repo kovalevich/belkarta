@@ -240,7 +240,12 @@ class AjaxController extends Controller
             }
             $arr[] = array(
                 'id'        => $card->getId(),
-                'user'      => $card->getUser() ? $card->getUser()->getUserName() : '-',
+                'user'      => $card->getUser() ? '<a href="' . $this->generateUrl('admin_users_edit', array(
+                        'id' => $card->getUser()->getId()
+                    )) . '">' . $card->getUser()->getUserName() . '</a>' : '-',
+                'refer' => $card->getUser()->getRefer() ? '<a href="' . $this->generateUrl('admin_users_edit', array(
+                        'id' => $card->getUser()->getRefer()->getId()
+                    )) . '">' . $card->getUser()->getRefer()->getUserName() . '</a>' : '-',
                 'type'      => $type,
                 'phone'     => $card->getPhone(),
                 'address'   => $card->getAddress(),
